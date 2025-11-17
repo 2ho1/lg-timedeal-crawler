@@ -1,0 +1,40 @@
+name: LG Time Deal Daily Crawl
+
+on:
+  schedule:
+    # 매일 오전 9시 (KST) 실행
+    # UTC 기준으로는 자정 (00:00) - 한국 시간은 UTC+9
+    - cron: '0 0 * * *'  # UTC 00:00 = KST 09:00
+  workflow_dispatch:  # 수동 실행도 가능
+
+jobs:
+  crawl-and-notify:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install Playwright
+      run: |
+        pip install playwright
+        playwright install chromium
+        playwright install-deps chromium
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+    
+    - name: Run crawler and send notification
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        LG_TIMEDEAL_URL: ${{ secrets.LG_TIMEDEAL_URL || 'https://www.lge.co.kr/benefits/exhibitions/detail-PE00385001' }}
+        PRIORITY_PRODUCTS: ${{ secrets.PRIORITY_PRODUCTS || '42C5,42C4,48C5,48C4' }}
+      run: |
+        python main.py --mode crawl --test
+

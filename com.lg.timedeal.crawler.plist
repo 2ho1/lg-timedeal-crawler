@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.lg.timedeal.crawler</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/1004368/Desktop/cursor/LG/venv/bin/python</string>
+        <string>/Users/1004368/Desktop/cursor/LG/main.py</string>
+        <string>--mode</string>
+        <string>schedule</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/1004368/Desktop/cursor/LG</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/1004368/Desktop/cursor/LG/crawler.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/1004368/Desktop/cursor/LG/crawler.error.log</string>
+</dict>
+</plist>
+
