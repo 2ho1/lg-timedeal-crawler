@@ -1,11 +1,11 @@
 name: LG Time Deal Daily Crawl
 
 on:
-  schedule:
-    # 매일 오전 9시 (KST) 실행
-    # UTC 기준으로는 자정 (00:00) - 한국 시간은 UTC+9
-    - cron: '0 0 * * *'  # UTC 00:00 = KST 09:00
-  workflow_dispatch:  # 수동 실행도 가능
+  # schedule:
+  #   # 매일 오전 9시 (KST) 실행
+  #   # UTC 기준으로는 자정 (00:00) - 한국 시간은 UTC+9
+  #   - cron: '0 0 * * *'  # UTC 00:00 = KST 09:00
+  workflow_dispatch:  # 수동 실행만 가능 (스케줄 비활성화됨)
 
 jobs:
   crawl-and-notify:
